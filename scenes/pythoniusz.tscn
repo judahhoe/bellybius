@@ -1,0 +1,285 @@
+[gd_scene load_steps=30 format=3 uid="uid://djiaqmxe1k8jx"]
+
+[ext_resource type="Script" path="res://scenes/Pythoniusz.gd" id="1_y0xln"]
+[ext_resource type="Texture2D" uid="uid://d02cykpim5dqq" path="res://assets/man/man_fall.png" id="2_2m4w8"]
+[ext_resource type="Texture2D" uid="uid://cfktwisunhb2r" path="res://assets/man/man_idle.png" id="2_21v2j"]
+[ext_resource type="Texture2D" uid="uid://d34t3tfj2yug" path="res://assets/man/man_charge.png" id="2_tps4j"]
+[ext_resource type="Texture2D" uid="uid://im6u75odcw2e" path="res://assets/man/man_pickup.png" id="3_mw6k3"]
+[ext_resource type="Texture2D" uid="uid://dw0nwhan10g3y" path="res://assets/man/man_walk.png" id="4_r61wn"]
+[ext_resource type="Texture2D" uid="uid://dq4qfuhjxhlh4" path="res://assets/misc/cap.png" id="7_3vb7p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yfwu"]
+atlas = ExtResource("2_2m4w8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8sy6"]
+atlas = ExtResource("2_2m4w8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vqcf"]
+atlas = ExtResource("2_2m4w8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v2gh"]
+atlas = ExtResource("2_2m4w8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymlwu"]
+atlas = ExtResource("2_21v2j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he7ea"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexgc"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axpve"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lfld"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmuej"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vpq1"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrx73"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u80g"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_if7qu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tps4j")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yfwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8sy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vqcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v2gh")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymlwu")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 0.1
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axpve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lfld")
+}],
+"loop": false,
+"name": &"pickup",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmuej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vpq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrx73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u80g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mwi4"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="Gradient" id="Gradient_13wvv"]
+offsets = PackedFloat32Array(0, 0.753333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_as4ul"]
+resource_name = "land"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ieey"]
+resource_name = "walk_0"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iwy5h"]
+resource_name = "walk_1"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sliq0"]
+_data = {
+"land": SubResource("Animation_as4ul"),
+"walk_0": SubResource("Animation_8ieey"),
+"walk_1": SubResource("Animation_iwy5h")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v4eua"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vqur"]
+radius = 3.0
+height = 12.0
+
+[node name="Pythoniusz" type="CharacterBody2D"]
+collision_mask = 1537
+script = ExtResource("1_y0xln")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_if7qu")
+animation = &"charge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_1mwi4")
+
+[node name="RunningParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-3, 7)
+amount = 6
+direction = Vector2(-2, -2)
+spread = 20.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+scale_amount_max = 1.4
+color = Color(0.18286, 0.308306, 0.0216311, 1)
+color_ramp = SubResource("Gradient_13wvv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -42)
+zoom = Vector2(5, 5)
+
+[node name="FeetMarker" type="Marker2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sliq0")
+}
+
+[node name="StepTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(10, 0)
+shape = SubResource("CapsuleShape2D_v4eua")
+disabled = true
+debug_color = Color(0.385391, 0.571958, 0.605738, 0.42)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -7)
+texture = ExtResource("7_3vb7p")
+
+[node name="ChargeArea" type="Area2D" parent="."]
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeArea"]
+position = Vector2(5, 1)
+shape = SubResource("CapsuleShape2D_1vqur")
+debug_color = Color(1, 0.00486279, 0.0632315, 0.42)
+
+[node name="ChargeTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
+[connection signal="body_entered" from="ChargeArea" to="." method="_on_charge_area_body_entered"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]

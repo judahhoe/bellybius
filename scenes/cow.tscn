@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7850t02se41b"]
+
+[ext_resource type="Texture2D" uid="uid://c872l11gq7tup" path="res://assets/misc/cow.png" id="1_cs8ya"]
+[ext_resource type="Script" path="res://scenes/cow.gd" id="1_p6wl3"]
+[ext_resource type="Texture2D" uid="uid://c5l1d8fbjub8m" path="res://assets/misc/cow_0.png" id="2_vw41i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_asdaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cs8ya")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vw41i")
+}],
+"loop": true,
+"name": &"pooping",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_p6wl3")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_asdaq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(20, 15)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

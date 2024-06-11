@@ -1,0 +1,146 @@
+[gd_scene load_steps=20 format=3 uid="uid://djiaqmxe1k8jx"]
+
+[ext_resource type="Script" path="res://scenes/Pythoniusz.gd" id="1_y0xln"]
+[ext_resource type="Texture2D" uid="uid://cfktwisunhb2r" path="res://assets/man_idle.png" id="2_21v2j"]
+[ext_resource type="Texture2D" uid="uid://im6u75odcw2e" path="res://assets/man_pickup.png" id="3_mw6k3"]
+[ext_resource type="Texture2D" uid="uid://dw0nwhan10g3y" path="res://assets/man_walk.png" id="4_r61wn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cee2g"]
+atlas = ExtResource("2_21v2j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qg4q"]
+atlas = ExtResource("2_21v2j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0va63"]
+atlas = ExtResource("2_21v2j")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v713"]
+atlas = ExtResource("2_21v2j")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he7ea"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexgc"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axpve"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lfld"]
+atlas = ExtResource("3_mw6k3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmuej"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vpq1"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrx73"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u80g"]
+atlas = ExtResource("4_r61wn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_if7qu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cee2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qg4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0va63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v713")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.1
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axpve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lfld")
+}],
+"loop": true,
+"name": &"pickup",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmuej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vpq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrx73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u80g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mwi4"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="Gradient" id="Gradient_13wvv"]
+offsets = PackedFloat32Array(0, 0.753333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Pythoniusz" type="CharacterBody2D"]
+script = ExtResource("1_y0xln")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_if7qu")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_1mwi4")
+
+[node name="RunningParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-3, 7)
+emitting = false
+amount = 6
+direction = Vector2(-2, -1)
+spread = 40.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(0.18286, 0.308306, 0.0216311, 1)
+color_ramp = SubResource("Gradient_13wvv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)

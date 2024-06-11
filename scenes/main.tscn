@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca7dtojt78xq0"]
+
+[ext_resource type="PackedScene" uid="uid://djiaqmxe1k8jx" path="res://scenes/pythoniusz.tscn" id="1_aaems"]
+[ext_resource type="Texture2D" uid="uid://dwg71415av4mi" path="res://assets/terrain/sky.png" id="1_sxx54"]
+[ext_resource type="PackedScene" uid="uid://b2w3btee6vkvs" path="res://scenes/platform.tscn" id="2_q5b35"]
+[ext_resource type="PackedScene" uid="uid://cfyml8mltfo56" path="res://scenes/beer.tscn" id="3_6lwgy"]
+[ext_resource type="PackedScene" uid="uid://bpfm3n0pjg4pv" path="res://scenes/coin.tscn" id="4_lsb0v"]
+[ext_resource type="PackedScene" uid="uid://d2aweanwuo0aw" path="res://scenes/sun.tscn" id="5_jfgwr"]
+[ext_resource type="PackedScene" uid="uid://cudjtgp7juphp" path="res://scenes/tree.tscn" id="6_y2jmv"]
+[ext_resource type="PackedScene" uid="uid://dwr8lqykv4w8p" path="res://scenes/goblin.tscn" id="8_25way"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1452.0
+offset_top = -986.0
+offset_right = 1918.0
+offset_bottom = 662.0
+texture = ExtResource("1_sxx54")
+stretch_mode = 1
+
+[node name="Pythoniusz" parent="." instance=ExtResource("1_aaems")]
+z_index = 100
+z_as_relative = false
+position = Vector2(212, 24)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(0, 13)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(115, 8)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(60, 38)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(124, 38)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(188, 38)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(252, 38)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(316, 38)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("2_q5b35")]
+position = Vector2(380, 38)
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="beer" parent="Pickups" instance=ExtResource("3_6lwgy")]
+position = Vector2(94, 10)
+
+[node name="beer2" parent="Pickups" instance=ExtResource("3_6lwgy")]
+position = Vector2(143, 13)
+
+[node name="beer3" parent="Pickups" instance=ExtResource("3_6lwgy")]
+position = Vector2(124, 31)
+
+[node name="coin" parent="Pickups" instance=ExtResource("4_lsb0v")]
+position = Vector2(297, 19)
+
+[node name="coin2" parent="Pickups" instance=ExtResource("4_lsb0v")]
+position = Vector2(336, 16)
+
+[node name="Sun" parent="." instance=ExtResource("5_jfgwr")]
+position = Vector2(0, -147)
+rotation = -0.846126
+color = Color(0.132453, 0.128492, 0, 1)
+shadow_enabled = true
+max_distance = 2000.0
+
+[node name="Tree" parent="." instance=ExtResource("6_y2jmv")]
+position = Vector2(267, 20)
+
+[node name="Goblin" parent="." instance=ExtResource("8_25way")]
+position = Vector2(173, 35)
+
+[node name="Goblin2" parent="." instance=ExtResource("8_25way")]
+position = Vector2(296, 37)
+
+[node name="Goblin3" parent="." instance=ExtResource("8_25way")]
+position = Vector2(341, 37)
