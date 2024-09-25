@@ -1,12 +1,48 @@
-[gd_scene load_steps=30 format=3 uid="uid://djiaqmxe1k8jx"]
+[gd_scene load_steps=43 format=3 uid="uid://djiaqmxe1k8jx"]
 
 [ext_resource type="Script" path="res://scenes/Pythoniusz.gd" id="1_y0xln"]
 [ext_resource type="Texture2D" uid="uid://d02cykpim5dqq" path="res://assets/man/man_fall.png" id="2_2m4w8"]
+[ext_resource type="Texture2D" uid="uid://dyr6joyyhbm3w" path="res://assets/man/man_bloated.png" id="2_7lfj0"]
 [ext_resource type="Texture2D" uid="uid://cfktwisunhb2r" path="res://assets/man/man_idle.png" id="2_21v2j"]
 [ext_resource type="Texture2D" uid="uid://d34t3tfj2yug" path="res://assets/man/man_charge.png" id="2_tps4j"]
 [ext_resource type="Texture2D" uid="uid://im6u75odcw2e" path="res://assets/man/man_pickup.png" id="3_mw6k3"]
+[ext_resource type="Texture2D" uid="uid://cvtt54x64lcow" path="res://assets/man/man_drink.png" id="4_3peh7"]
 [ext_resource type="Texture2D" uid="uid://dw0nwhan10g3y" path="res://assets/man/man_walk.png" id="4_r61wn"]
 [ext_resource type="Texture2D" uid="uid://dq4qfuhjxhlh4" path="res://assets/misc/cap.png" id="7_3vb7p"]
+[ext_resource type="Shape2D" uid="uid://bibgmu60u4o2q" path="res://scenes/bellybius_bloated_collider.tres" id="8_xx74f"]
+[ext_resource type="Texture2D" uid="uid://hxc7r2c4mcq3" path="res://assets/man/wrench.png" id="10_jbi1d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhmjv"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h54vs"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d10v"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnncx"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1flg"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_243l6"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqldt"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cvca"]
+atlas = ExtResource("4_3peh7")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0yfwu"]
 atlas = ExtResource("2_2m4w8")
@@ -64,10 +100,56 @@ region = Rect2(48, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_7lfj0")
+}],
+"loop": true,
+"name": &"bloated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_tps4j")
 }],
 "loop": true,
 "name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhmjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h54vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d10v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnncx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1flg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1flg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1flg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1flg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_243l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqldt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cvca")
+}],
+"loop": true,
+"name": &"drink",
 "speed": 5.0
 }, {
 "frames": [{
@@ -129,10 +211,6 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mwi4"]
-radius = 5.0
-height = 14.0
 
 [sub_resource type="Gradient" id="Gradient_13wvv"]
 offsets = PackedFloat32Array(0, 0.753333, 1)
@@ -214,17 +292,37 @@ height = 12.0
 radius = 3.0
 height = 12.0
 
-[node name="Pythoniusz" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kywff"]
+radius = 1.0
+height = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pes48"]
+radius = 5.0
+height = 14.0
+
+[node name="pythoniusz" type="CharacterBody2D"]
 collision_mask = 1537
+floor_stop_on_slope = false
 script = ExtResource("1_y0xln")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_if7qu")
-animation = &"charge"
+animation = &"walk"
+frame_progress = 0.876252
+
+[node name="ButtMarker" type="Marker2D" parent="Sprite2D"]
+position = Vector2(0, 3)
+
+[node name="Wrench" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 5
+position = Vector2(8, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_jbi1d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_1mwi4")
+shape = ExtResource("8_xx74f")
 
 [node name="RunningParticles" type="CPUParticles2D" parent="."]
 position = Vector2(-3, 7)
@@ -237,12 +335,11 @@ initial_velocity_max = 15.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 scale_amount_max = 1.4
-color = Color(0.18286, 0.308306, 0.0216311, 1)
 color_ramp = SubResource("Gradient_13wvv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -42)
 zoom = Vector2(5, 5)
+limit_bottom = 65
 
 [node name="FeetMarker" type="Marker2D" parent="."]
 position = Vector2(0, 8)
@@ -263,23 +360,44 @@ shape = SubResource("CapsuleShape2D_v4eua")
 disabled = true
 debug_color = Color(0.385391, 0.571958, 0.605738, 0.42)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Cap" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1, -7)
 texture = ExtResource("7_3vb7p")
 
 [node name="ChargeArea" type="Area2D" parent="."]
-collision_mask = 2
+position = Vector2(5, 1)
+collision_mask = 194
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeArea"]
-position = Vector2(5, 1)
 shape = SubResource("CapsuleShape2D_1vqur")
 debug_color = Color(1, 0.00486279, 0.0632315, 0.42)
 
 [node name="ChargeTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="FeetArea" type="Area2D" parent="."]
+position = Vector2(0, 7)
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeetArea"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_kywff")
+
+[node name="InteractArea" type="Area2D" parent="."]
+position = Vector2(10, 0)
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CapsuleShape2D_pes48")
+debug_color = Color(1, 1, 0, 0.419608)
+
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 [connection signal="body_entered" from="ChargeArea" to="." method="_on_charge_area_body_entered"]
+[connection signal="body_exited" from="ChargeArea" to="." method="_on_charge_area_body_exited"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="body_entered" from="FeetArea" to="." method="_on_feet_area_body_entered"]
+[connection signal="body_exited" from="FeetArea" to="." method="_on_feet_area_body_exited"]

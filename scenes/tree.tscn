@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c8h60uicuibaa" path="res://assets/terrain/tree.png" id="1_ijgyu"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j7w16"]
-polygon = PackedVector2Array(-6, 24, 8, 24, 5, 18, 3, 1, 4, -2, 11, -2, 13, -8, 11, -18, 7, -21, -2, -22, -8, -20, -12, -16, -14, -11, -13, -3, -8, 0, -3, 0, -4, 18)
+polygon = PackedVector2Array(-8, 63, 5, 64, 2, 52, 7, 31, 21, 34, 26, 23, 35, 17, 24, -14, 10, -16, -1, -17, -16, -20, -27, -5, -43, 8, -39, 17, -42, 27, -20, 26, -10, 30, -5, 52)
 
 [node name="Tree" type="Node2D"]
 

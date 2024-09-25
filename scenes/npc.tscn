@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd7vl1qcgrpdb"]
+
+[ext_resource type="Texture2D" uid="uid://cngu07u6e5oa" path="res://assets/npcs/woman/woman.png" id="1_2iaa7"]
+[ext_resource type="Script" path="res://scenes/npc.gd" id="1_bbvq7"]
+[ext_resource type="Texture2D" uid="uid://dvxfeyf023qtu" path="res://assets/npcs/woman/woman_talk.png" id="2_mquoe"]
+[ext_resource type="StyleBox" uid="uid://cc3pon8uqwc3e" path="res://themes/text_background.tres" id="4_fy5wm"]
+[ext_resource type="AudioStream" uid="uid://763il7ynw24n" path="res://sfx/blah.mp3" id="5_4u8wa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyies"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2iaa7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2iaa7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mquoe")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jqsc"]
+radius = 11.0
+height = 24.0
+
+[node name="npc" type="Node2D"]
+script = ExtResource("1_bbvq7")
+dialogue = "Remember to get milk!"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xyies")
+animation = &"talk"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_6jqsc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+offset_left = 6.0
+offset_top = -11.0
+offset_right = 33.0
+offset_bottom = 23.0
+scale = Vector2(0.11041, 0.117882)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = ExtResource("4_fy5wm")
+fit_content = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4u8wa")
+bus = &"Voice"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

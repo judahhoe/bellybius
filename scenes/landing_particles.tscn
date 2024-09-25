@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkak2i0ol3abc"]
+[gd_scene load_steps=3 format=3 uid="uid://dkak2i0ol3abc"]
+
+[ext_resource type="Script" path="res://scenes/landing_particles.gd" id="1_frula"]
 
 [sub_resource type="Gradient" id="Gradient_ktjci"]
 offsets = PackedFloat32Array(0, 0.126667, 0.653333, 1)
@@ -24,3 +26,4 @@ scale_amount_min = 1.2
 scale_amount_max = 1.6
 color = Color(0.14, 0.105117, 0.049, 1)
 color_ramp = SubResource("Gradient_ktjci")
+script = ExtResource("1_frula")

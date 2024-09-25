@@ -10,7 +10,7 @@ size = Vector2(84, 3)
 position = Vector2(0, 20)
 collision_layer = 512
 script = ExtResource("1_d6tds")
-floor_particle_color = Color(0.254902, 0.4, 0.207843, 1)
+floor_particle_color = Color(0, 0.4, 0.0313726, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

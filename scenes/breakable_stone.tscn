@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://p7eh1wy25sn3"]
+[gd_scene load_steps=6 format=3 uid="uid://p7eh1wy25sn3"]
 
 [ext_resource type="Script" path="res://scenes/breakable_stone.gd" id="1_gyrfn"]
 [ext_resource type="Texture2D" uid="uid://qenp03h6xtpl" path="res://assets/terrain/stone_breakable.png" id="1_nhkyy"]
 [ext_resource type="Texture2D" uid="uid://dg433y4vwttvk" path="res://assets/misc/smoke.png" id="3_xgvf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17oqj"]
-size = Vector2(28, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_om2ue"]
 size = Vector2(32, 32)
 
 [sub_resource type="Gradient" id="Gradient_dk0tt"]
@@ -15,6 +12,7 @@ offsets = PackedFloat32Array(0, 0.166667, 0.84, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="BreakableStone" type="StaticBody2D"]
+collision_layer = 1152
 script = ExtResource("1_gyrfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,15 +21,11 @@ texture = ExtResource("1_nhkyy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_17oqj")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_om2ue")
-debug_color = Color(0.35, 0.35, 0.35, 0.419608)
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 30
 lifetime = 1.5
+one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.3
 texture = ExtResource("3_xgvf2")

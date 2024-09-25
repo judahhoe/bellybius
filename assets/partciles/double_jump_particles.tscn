@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf36tewck3l5m"]
+
+[ext_resource type="Texture2D" uid="uid://c2psa0y8fbtf8" path="res://assets/partciles/dust_0.png" id="1_q3ibl"]
+[ext_resource type="AudioStream" uid="uid://bsme1mq1tqvdy" path="res://sfx/pierd1_final.mp3" id="2_c0fpd"]
+[ext_resource type="Script" path="res://assets/partciles/double_jump_particles.gd" id="2_yh0du"]
+
+[sub_resource type="Curve" id="Curve_x1c24"]
+_data = [Vector2(0, 0.120879), 0.0, 0.632838, 0, 0, Vector2(0.0955056, 1), 0.0, 0.0, 0, 0, Vector2(0.449438, 1), 0.0, 0.0, 0, 0, Vector2(0.859551, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_4fh02"]
+offsets = PackedFloat32Array(0, 0.0933333, 0.506667, 0.86, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0.92549, 0.92549, 0.92549, 0.521569, 0.858824, 0.858824, 0.858824, 0, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_q8j11"]
+colors = PackedColorArray(0.254902, 0.592157, 0.156863, 1, 1, 1, 1, 1)
+
+[node name="DoubleJumpParticles" type="CPUParticles2D"]
+position = Vector2(-3, 5)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.8
+lifetime_randomness = 0.1
+texture = ExtResource("1_q3ibl")
+direction = Vector2(0, 1)
+spread = 120.0
+gravity = Vector2(0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+scale_amount_curve = SubResource("Curve_x1c24")
+color = Color(0.835294, 1, 0.729412, 0.203922)
+color_ramp = SubResource("Gradient_4fh02")
+color_initial_ramp = SubResource("Gradient_q8j11")
+script = ExtResource("2_yh0du")
+
+[node name="DoubleJumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_c0fpd")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkl8nhkhhjqal"]
+
+[ext_resource type="Texture2D" uid="uid://dyr6joyyhbm3w" path="res://assets/man/man_bloated.png" id="1_4fy1o"]
+[ext_resource type="Script" path="res://scenes/bellybius_bloated.gd" id="1_i8kbk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_47o5g"]
+bounce = 0.6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn0fj"]
+
+[node name="bellybius_bloated" type="RigidBody2D"]
+collision_mask = 1603
+physics_material_override = SubResource("PhysicsMaterial_47o5g")
+script = ExtResource("1_i8kbk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cn0fj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4fy1o")
+
+[node name="GroundCheck" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+collision_mask = 512
+
+[node name="GroundCheck2" type="RayCast2D" parent="."]
+target_position = Vector2(-11, 0)
+collision_mask = 512
+
+[node name="GroundCheck3" type="RayCast2D" parent="."]
+target_position = Vector2(0, -11)
+collision_mask = 512
+
+[node name="GroundCheck4" type="RayCast2D" parent="."]
+target_position = Vector2(11, 0)
+collision_mask = 512
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+limit_bottom = 65

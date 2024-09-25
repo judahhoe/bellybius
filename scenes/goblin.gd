@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var collider = $CollisionShape2D
+@onready var belly_plop_sound = $PlopAudio
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,6 +24,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func get_charged(direction):
+	belly_plop_sound.play()
 	animation.play("get_charged")
 	collider.call_deferred("set_disabled", true)
 	sprite.play("fall")
